@@ -1,0 +1,21 @@
+.banner_big {
+    
+    &__img {
+        height: 320px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            max-height: 90%;
+            max-width: 90%;
+            height: auto;
+            width: auto;
+        }
+    }
+
+    &__anons {
+        padding: 5px;
+    }
+}

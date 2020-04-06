@@ -1,0 +1,30 @@
+@import "./card.scss";
+@import "./big.scss";
+@import "./mini.scss";
+@import "./item.scss";
+
+.banner {
+    cursor: pointer;
+    padding: 5px 0;
+    border: 1px solid #cecece;
+    text-decoration: none;
+    color: black;
+    background: white;
+    display: block;
+
+    &:hover {
+        box-shadow: 0 1px 3px grey;
+        text-decoration: none;
+        color: black;
+    }
+
+    &__rubric {
+        padding: 5px;
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+        background-color: #e31e25;
+        width: 150px;
+    }
+}
