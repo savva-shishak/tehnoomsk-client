@@ -24,7 +24,6 @@ export function Carousel({activeId}) {
             </div>
             <div className="carousel__body">
                 <div className="carousel__slides">
-                    {/* {!activeBanner && <div className="carousel__status">Загрузка...</div>} */}
                     {slides.length != 0 && <CSlide banner={slides[activeSlideId]}/>}
                 </div>
             </div>
@@ -53,11 +52,11 @@ const fakeBanners = [
     {
         rubric: "Автосфера",
         img_src: "/carousel/грузовик.jpg",
-        anons: "Просто какой-то текст чтобы заполнить содержимое этого баннера, которое очень легко заменить"
+        anons: "Представлен новый российский тягач УРАЛ NEXT. В разработке машины принимали участие представители завода и государственного предприятия НАМИ..."
     },
     {
         rubric: "тягочи",
         img_src: "/carousel/тягач.jpg",
-        anons: "Просто какой-то текст чтобы заполнить содержимое этого баннера, которое очень легко заменить"
+        anons: "Представлен новый российский тягач УРАЛ NEXT. В разработке машины принимали участие представители завода и государственного предприятия НАМИ..."
     },
 ]

@@ -1,6 +1,6 @@
 @mixin adaptive($dev-size, $min-width) {
 
-    @media (min-width: $min-width){
+    @media (min-width: $min-width) {
         .col-#{$dev-size} {
             flex: 1 1 auto;
             height: 100%;
@@ -19,6 +19,9 @@
     display: flex;
     flex-flow: row wrap;
     width: 100%;
+    padding: 0;
+    margin: 0;
+    
 
     .col {
         flex: 1 1 auto;
@@ -33,12 +36,13 @@
     }
 
     .col__gutter {
-        padding: 5px;
         height: 100%;
+
+        padding: 5px;
     }
 
     @include adaptive("sm", 575.98px);
-    @include adaptive("md", 767.98px);
+    @include adaptive("md", 720.98px);
     @include adaptive("lg", 991.98px);
     @include adaptive("xl", 1199.98px);
 }

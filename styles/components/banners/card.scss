@@ -1,19 +1,17 @@
 .banner_card {
-    min-height: 400px;
-
     display: flex;
     flex-direction: column;
 
     &__img {
-        height: 230px;
+        height: 220px;
 
         display: flex;
         justify-content: center;
         align-items: center;
 
         img {
-            max-height: 90%;
-            max-width: 90%;
+            max-height: 95%;
+            max-width: 95%;
             height: auto;
             width: auto;
         }
@@ -21,8 +19,8 @@
 
     &__content {
         padding: 5px;
-        padding-top: 0;
-        height: 150px;
+        height: 120px;
+        margin: 10px 0;
     }
 
     &__title {

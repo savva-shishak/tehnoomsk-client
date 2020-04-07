@@ -6,9 +6,7 @@ export function Layout({title, children}) {
             <Header />
             {children}
             <style jsx>{`
-                // .container {
-                //     padding: 0 calc(50vw - 480px);
-                // }
+                
             `}</style>
         </div>
     )
