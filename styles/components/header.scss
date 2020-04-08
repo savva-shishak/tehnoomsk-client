@@ -9,6 +9,9 @@
         grid-row: 1/2;
         grid-column: 1/2;
         z-index: +1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 
     &__img {

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BBig } from './banners';
 
-export function Carousel({activeId}) {
-    const slides = fakeBanners
+export function Carousel({activeId, slides}) {
     const [activeSlideId, setActive] = useState(activeId || 0);
 
     function toLeft() {
@@ -47,16 +46,3 @@ function CSlide({banner}) {
         </div>
     )
 }
-
-const fakeBanners = [
-    {
-        rubric: "Автосфера",
-        img_src: "/carousel/грузовик.jpg",
-        anons: "Представлен новый российский тягач УРАЛ NEXT. В разработке машины принимали участие представители завода и государственного предприятия НАМИ..."
-    },
-    {
-        rubric: "тягочи",
-        img_src: "/carousel/тягач.jpg",
-        anons: "Представлен новый российский тягач УРАЛ NEXT. В разработке машины принимали участие представители завода и государственного предприятия НАМИ..."
-    },
-]

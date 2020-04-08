@@ -4,16 +4,20 @@ import { BCard, BMini } from '../components/banners';
 import { Row, Col } from "../components/row";
 import { Carousel } from '../components/carousel';
 import { HotList } from '../components/hot-list';
+import { Paginator } from "../components/paginator";
 
-const IndexPage = () => {
-  
+import { withRouter } from "next/router"
+import { getSlides } from "../api/carousel"
+import { getAllRubrics } from '../api/rubrics';
+
+const IndexPage = ({carousel, rubrics}) => {
   return (
-    <Layout title="Главная страница">
+    <Layout rubrics={rubrics} title={`Главная страница`}>
       <Row>
         <Col lg="8" md="12">
           <Row>
             <Col cols="12">
-              <Carousel/>
+              <Carousel slides={carousel}/>
             </Col>
             <Col cols="12">
               <HotList startIndex="0" numItems="2" />
@@ -66,8 +70,13 @@ const IndexPage = () => {
           </Row>
         </Col>
       </Row>
+      <Paginator position={1} end={12} />
     </Layout>
   )
 }
 
-export default IndexPage;
+IndexPage.getInitialProps = async function() {
+  return {carousel: await getSlides(), rubrics: await getAllRubrics()}
+}
+
+export default withRouter(IndexPage);

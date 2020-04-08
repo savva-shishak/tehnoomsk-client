@@ -1,29 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { BItem } from "../components/banners"
-
-export function HotList({startIndex, numItems}) {
-    const [items, setItems] = useState(fakeList.slice(startIndex, startIndex+numItems));
-
-    return (
-        <div className="hotlist">
-            {items.map(({id, img_src, rubric, post_id, title, anons}) => 
-                <div key={id} className="list_item">
-                    <BItem 
-                        imgSrc={img_src}
-                        rubric={rubric}
-                        postId={post_id}
-                        title={title}
-                        anons={anons}
-                    />
-                </div>
-            )}
-            <style jsx>{`
-                .list_item {
-                    padding: 5px 0;
-                }
-            `}</style>
-        </div>
-    )
+export function getHotList(start, end) {
+    return new Promise(res => {
+        setTimeout(() => {
+            res(fakeList);
+        }, 1000);
+    })
 }
 
 const fakeList = [
