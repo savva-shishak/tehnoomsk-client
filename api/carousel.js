@@ -1,8 +1,8 @@
 export function getSlides() {
     return new Promise(res => {
-        setTimeout(() => {
+        //setTimeout(() => {
             res(fakeBanners)
-        }, 1000);
+        //}, 1000);
     });
 }
 

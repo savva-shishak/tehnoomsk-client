@@ -9,7 +9,7 @@ export function Footer({rubrics}) {
     return (
         <div className="footer">
             <Row>
-                <Col cols="7">
+                <Col cols="12" lg="7">
                     <div className="footer__subtitle">© 2007-2020. Техносфера. Россия.</div>
                     <div className="footer__info">
                         Независимый электронный информационно-технический медиаресурс о российской науке технике и технологиях.<br/>

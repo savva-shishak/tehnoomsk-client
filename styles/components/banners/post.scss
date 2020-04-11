@@ -1,0 +1,11 @@
+.banner_post {
+    cursor: default;
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    &__content {
+        padding: 5px;
+    }
+}

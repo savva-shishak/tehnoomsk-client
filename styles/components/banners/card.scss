@@ -1,4 +1,5 @@
 .banner_card {
+    min-height: 407px;
     display: flex;
     flex-direction: column;
 
@@ -19,7 +20,7 @@
 
     &__content {
         padding: 5px;
-        height: 120px;
+        min-height: 120px;
         margin: 10px 0;
     }
 
