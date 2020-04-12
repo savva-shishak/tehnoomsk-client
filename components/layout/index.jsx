@@ -1,8 +1,14 @@
 import { Header } from "./header";
 import { Footer } from "./footer";
 import Head from "next/head";
+import { useState } from "react";
+import { getRubrics } from "../../api"
 
-export function Layout({title, rubrics, children}) {
+export function Layout({title, children}) {
+    const [rubrics, setRubrics] = useState([])
+
+    getRubrics().then(({rubrics}) => rubrics).then(setRubrics)
+
     return (
         <div className="container">
             <Head>

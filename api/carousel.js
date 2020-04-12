@@ -1,12 +1,4 @@
-export function getSlides() {
-    return new Promise(res => {
-        //setTimeout(() => {
-            res(fakeBanners)
-        //}, 1000);
-    });
-}
-
-const fakeBanners = [
+export const fakeCarousel = [
     {
         rubric: "Автосфера",
         img_src: "/carousel/грузовик.jpg",
@@ -16,5 +8,5 @@ const fakeBanners = [
         rubric: "тягочи",
         img_src: "/carousel/тягач.jpg",
         anons: "Представлен новый российский тягач УРАЛ NEXT. В разработке машины принимали участие представители завода и государственного предприятия НАМИ..."
-    },
+    }
 ]

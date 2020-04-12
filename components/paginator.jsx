@@ -1,67 +1,77 @@
 import React, { useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { getEnd } from '../api' 
 
-export function Paginator({position, end}) {
-    const [pos, setPosToState] = useState(position || 1);
+let endStore;
 
-    function setPos(pos) {
-        setPosToState(pos);
-    }
+export function Paginator() {
+    let end = 10000
+    
+    const { query: {page} } = useRouter()
 
-    function toLeft() {
-        setPos(pos - 9 < 1? 1 : pos - 9)
-    }
+    const position = page || 1
 
-    function toRight() {
-        setPos(pos + 9 > end? end : pos + 9)
+    if (!endStore) {
+        getEnd().then(e => {
+            endStore = e
+            end = e
+        })
+    } else {
+        end = endStore
     }
 
     return (
         <div className="paginator">
             <div className="paginator__label">Посмотреть наши предыдущие публикации:</div>
             <div className="paginator__control">
-                <div onClick={toLeft} className="paginator__arrow">
-                    <img src='/paginator/left.png'/>
-                </div>
+                {position > 3 && <Link href={'/?page=' + Math.max(position - 5, 1)}>
+                    <div className="paginator__arrow">
+                        <img src='/paginator/left.png'/>
+                    </div>
+                </Link>}
                 <div className="paginator__numbers">
-                    <Numbers position={pos} end={end} onSelect={setPos} />
+                    <Numbers position={position} end={end} />
                 </div>
-                <div onClick={toRight} className="paginator__arrow">
-                    <img src='/paginator/right.png'/>
-                </div>
+                {(+position + 3) < end  && <Link href={'/?page=' + Math.min(+position + +5, end)}>
+                    <div className="paginator__arrow">
+                        <img src='/paginator/right.png'/>
+                    </div>
+                </Link>}
             </div>
         </div>
     )
 }
 
-function Numbers({position, end, onSelect}) {
-    let start, endPag;
+function Numbers({position, end}) {
+    let start;
 
-    if (position > 5) {
-        start = position - 4
+    if (position > 3) {
+        start = position - 2
     } else {
         start = 1
     }
 
-    const numbers = Array.from(Array(Math.min(9, end - start)), (_, i) => (i+start));
+    const numNumbers = Math.min(5, end - start)
+
+    const numbers = Array.from(Array(numNumbers), (_, i) => i+start);
 
     function getClassStyle(num) {
-        return "paginator__number" + (num == position? " paginator__number_active": "")
+        return "paginator__number " + (num == position? " paginator__number_active": "")
     }
 
     return (
         <div className="paginator__numbers">
             {start != 1 && <div className="paginator__number">...</div>}
             {numbers.map(num => 
-                <div 
-                    className={getClassStyle(num)} 
-                    onClick={() => onSelect(num)}
-                    key={num}
-                
-                >
-                    {num}
-                </div> )}
-            {start + 9 < end && <div className="paginator__number">...</div>}
-            {start + 9 >= end && <div onClick={() => onSelect(end)} className={getClassStyle(end)}>{end}</div>}
+                <Link key={num} href={'/?page=' + num} >
+                    <div className={getClassStyle(num)}>
+                        {num}
+                    </div>
+                </Link>
+            )}
+            {start + 5 < end && <div className="paginator__number">...</div>}
+            {start + 5 >= end && <div className={getClassStyle(end)}>{end}</div>}
         </div>
     )
 }

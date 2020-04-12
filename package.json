@@ -12,7 +12,9 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "js-cookie": "^2.2.1",
     "next": "latest",
+    "next-cookies": "^2.0.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "sass": "1.26.3"

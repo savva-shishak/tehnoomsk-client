@@ -1,55 +1,85 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-import { withRouter } from "next/router"
-import { getSlides } from "../api/carousel"
-import { getAllRubrics } from '../api/rubrics';
-import { getHotList } from '../api/hot-list';
-import { Desktop } from '../components/index-views/desktop';
-import { Mobile } from '../components/index-views/mobile';
 import { Layout } from '../components/layout';
 import { Paginator } from "../components/paginator"
+import { BCard, BItem } from '../components/banners';
+import { Row, Col } from "../components/row";
+import { Carousel } from '../components/carousel';
+import { getPageData } from '../api';
 
-class IndexPage extends Component {
+function IndexPage({carousel, hotList, cards}) {
+  
+  const router = useRouter()
 
-  constructor(props) {
-    super(props)
+  const codeWorld = "я-админ"
+  let inputSymbols = ''
 
-    this.state = {
-      width: 10000
+  useEffect(() => {
+    document.onkeydown = e => {
+      inputSymbols += e.key.toLowerCase()
+
+      if (inputSymbols.includes(codeWorld)) {
+        router.push("/admin")
+      }
     }
-  }
+  })
 
-  static async getInitialProps () {
-    return {
-      carousel: await getSlides(),
-      rubrics: await getAllRubrics(), 
-      hotList: await getHotList(),
-      cards: (await getHotList()).slice(0, 3)
-    }
-  }
+  return (
+    <Layout title="Техносфера">
+      <Row>
+        <Col lg="8">
+            <Row>
+              <Col cols="12">
+                  {(!!carousel && carousel.length) != 0 && <Carousel slides={carousel}/>}
+                  <div className="list">
+                      {hotList.map(({id, img_src, subtitle, rubric, post_id, title, anons}) => 
+                          <div key={id} className="list_item">
+                              <BItem 
+                                  imgSrc={img_src}
+                                  rubric={rubric}
+                                  postId={post_id}
+                                  title={title}
+                                  anons={anons}
+                                  subtitle={subtitle}
+                              />
+                          </div>
+                      )}
+                  </div>
+              </Col>
+          </Row>
+        </Col>
+        <Col lg="4">
+          <Row>
+              {cards.map(({id, title, subtitle, img_src, img_down, anons, rubric}) => 
+                  <Col key={id} cols="6" md="12">
+                      <BCard
+                          title={title}
+                          subtitle={subtitle}
+                          imgSrc={img_src}
+                          imgDown={img_down}
+                          anons={anons}
+                          rubric={rubric}
+                      />
+                  </Col>
+              )}
+          </Row>
+        </Col>
+          <style jsx>{`
+              .list_item {
+                  padding: 5px 0;
+              }
+          `}</style>
+      </Row>
+      <Paginator />
+    </Layout>
+  )
+}
 
-  componentDidMount() {
-    console.log(window);
-    this.setState({width: document.body.offsetWidth})
-  }
-
-  render () {
-    const { width } = this.state
-
-    console.log(width);
-    
-
-    return (
-      <Layout rubrics={this.props.rubrics} >
-        <Desktop props={this.props} />
-        <Paginator position={1} end={12} />
-      </Layout>
-    )
+IndexPage.getInitialProps = async ({query: {page}}) => {
+  return {
+    ...await getPageData(page || 1)
   }
 }
 
-IndexPage.componentDidMount = function () {
-  console.log(window);
-}
-
-export default withRouter(IndexPage);
+export default IndexPage;

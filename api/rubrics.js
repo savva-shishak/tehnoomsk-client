@@ -4,7 +4,7 @@ export function getAllRubrics() {
     })
 }
 
-const rubrics = [
+export const rubrics = [
     {
         id: 1,
         name: "Производство",
