@@ -33,12 +33,12 @@ function IndexPage({carousel, hotList, cards}) {
               <Col cols="12">
                   {(!!carousel && carousel.length) != 0 && <Carousel slides={carousel}/>}
                   <div className="list">
-                      {hotList.map(({id, img_src, subtitle, rubric, post_id, title, anons}) => 
+                      {hotList.map(({id, img_src, subtitle, rubric, article_id, title, anons}) => 
                           <div key={id} className="list_item">
                               <BItem 
                                   imgSrc={img_src}
                                   rubric={rubric}
-                                  postId={post_id}
+                                  postId={article_id}
                                   title={title}
                                   anons={anons}
                                   subtitle={subtitle}
@@ -51,7 +51,7 @@ function IndexPage({carousel, hotList, cards}) {
         </Col>
         <Col lg="4">
           <Row>
-              {cards.map(({id, title, subtitle, img_src, img_down, anons, rubric}) => 
+              {cards.map(({id, title, subtitle, img_src, article_id, img_down, anons, rubric}) => 
                   <Col key={id} cols="6" md="12">
                       <BCard
                           title={title}
@@ -60,6 +60,7 @@ function IndexPage({carousel, hotList, cards}) {
                           imgDown={img_down}
                           anons={anons}
                           rubric={rubric}
+                          postId={article_id}
                       />
                   </Col>
               )}

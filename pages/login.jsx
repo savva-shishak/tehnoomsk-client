@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Cookie from 'js-cookie'
 
 export let auth = false
 
@@ -9,7 +10,7 @@ export default () => {
     const router = useRouter()
     
     function toAuth() {
-        document.cookie = `auth=${true}`
+        Cookie.set('auth', true, { expires: 10 })
         router.push('/admin')
     }
 

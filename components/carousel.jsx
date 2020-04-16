@@ -42,6 +42,7 @@ function CSlide({banner}) {
                 rubric={banner.rubric}
                 imgSrc={banner.img_src}
                 anons={banner.anons}
+                postId={banner.article_id}
             />
         </div>
     )

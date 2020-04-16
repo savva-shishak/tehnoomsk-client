@@ -1,27 +1,35 @@
 import { useRouter } from "next/router"
 import { useEffect } from "react"
+import { Toolbar } from './toolbar'
 import Cookies from 'js-cookie'
 
 export function ALayout({children}) {
     const router = useRouter()
 
     useEffect(() => {
-       const isAuth = Cookies.getJSON('auth');
-        
-        if (!isAuth) {
+        if (!getAuth()) {
             router.push("/login")
+        } else {
+            if (router.pathname == '/admin') {
+                router.push("/admin/banners")
+            }
         }
     })
     
     return (
-        <div className="container">
+        <div className="container admin">
+            <Toolbar />
             {children}
-            <style jsx>{`
-                .container {
-                    margin-top: 70px;
-                    max-width: 95%;
-                }
-            `}</style>
         </div>
     )
+}
+
+let isAuth = false;
+
+function getAuth() {
+    if (!isAuth) {
+        isAuth = Cookies.getJSON('auth');
+    }
+
+    return isAuth
 }

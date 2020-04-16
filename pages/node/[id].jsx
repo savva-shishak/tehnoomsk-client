@@ -6,8 +6,10 @@ import { getPost } from '../../api'
 import { Row, Col } from '../../components/row'
 import { Paginator } from "../../components/paginator";
 
-const Page = ({post, cards, hotList}) => 
-    <Layout title={post.title}>
+const Page = ({post, cards, hotList}) => {
+    console.log(hotList);
+    
+    return <Layout title={post.title}>
         <Row>
             <Col cols="8">
                 <Post
@@ -16,12 +18,12 @@ const Page = ({post, cards, hotList}) =>
                     content={post.content}
                 />
                 <div className="list">
-                      {hotList.map(({id, img_src, subtitle, rubric, post_id, title, anons}) => 
+                      {hotList.filter(item => !!item.img_src).map(({id, img_src, subtitle, rubric, article_id, title, anons}) => 
                           <div key={id} className="list_item">
                               <BItem 
                                   imgSrc={img_src}
                                   rubric={rubric}
-                                  postId={post_id}
+                                  postId={article_id}
                                   title={title}
                                   anons={anons}
                                   subtitle={subtitle}
@@ -32,7 +34,7 @@ const Page = ({post, cards, hotList}) =>
             </Col>
             <Col cols="4">
                 <Row>
-                    {cards.map(({id, title, subtitle, img_src, img_down, anons, rubric}) => 
+                    {cards.filter(item => !!item.img_src).map(({id, title, article_id, subtitle, img_src, img_down, anons, rubric}) => 
                         <Col key={id} cols="6" md="12">
                                 <BCard
                                     title={title}
@@ -41,6 +43,7 @@ const Page = ({post, cards, hotList}) =>
                                     imgDown={img_down}
                                     anons={anons}
                                     rubric={rubric}
+                                    postId={article_id}
                                 />
                         </Col>
                     )}
@@ -48,11 +51,12 @@ const Page = ({post, cards, hotList}) =>
             </Col>
         </Row>
     </Layout>
-
+}
 
 Page.getInitialProps = async ({asPath}) => {
     const id = asPath.split('/')[2]
-    return {...await getPost(id) }
+    const data = await getPost(id)
+    return {...data }
 }
 
 export default Page

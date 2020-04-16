@@ -1,0 +1,32 @@
+.toolbar {
+    display: flex;
+
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 10px;
+    padding-left: 50px;
+    background-color: rgb(31, 25, 51);
+
+    &__tool {
+        padding: 15px 25px;
+        color: white;
+        cursor: pointer;
+
+        background-color: rgba(white, .2);
+
+        &:hover {
+            background-color: rgba(white, .4);
+        }
+
+        &_active {
+            background-color: white;
+            color: rgb(31, 25, 51);
+
+            &:hover {
+                background-color: rgba(white, .8);
+            }
+        }
+    }
+}

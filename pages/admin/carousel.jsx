@@ -4,7 +4,7 @@ const AdminPage = ({}) => {
 
     return (
         <ALayout>
-            index
+            carousel
         </ALayout>
     )
 }
