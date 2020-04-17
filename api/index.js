@@ -8,23 +8,23 @@ import axios from 'axios'
 export const domainOfData = "http://localhost:3000/api"
 
 export const getPageData = async pageNum => {
-    const data = await pages(pageNum);
+    // const data = await pages(pageNum);
     
-    data.cards.map(chageUrlInBanner)
-    data.carousel.map(chageUrlInBanner)
-    data.hotList.map(chageUrlInBanner)
+    // data.cards.map(chageUrlInBanner)
+    // data.carousel.map(chageUrlInBanner)
+    // data.hotList.map(chageUrlInBanner)
 
-    return data;
+    return await fpages(pageNum);
 }
 
 export const getPost = async id => { 
-    const data = await httpPost(id);
+    // const data = await httpPost(id);
 
-    data.cards.map(chageUrlInBanner)
-    data.hotList.map(chageUrlInBanner)
-    changeUrlInPost(data.post)
+    // data.cards.map(chageUrlInBanner)
+    // data.hotList.map(chageUrlInBanner)
+    // changeUrlInPost(data.post)
 
-    return data;
+    return await fpost();
 }
 export function getRubrics() {
     return new Promise(res =>{
