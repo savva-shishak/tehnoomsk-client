@@ -1,0 +1,14 @@
+@import "../root.scss";
+
+.share {
+    display: flex;
+    align-content: center;
+    margin: 10px 0;
+
+    &__text {
+        text-transform: uppercase;
+        color: $red;
+        font-size: 20px;
+        font-weight: 600;
+    }
+}

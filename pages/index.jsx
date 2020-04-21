@@ -26,7 +26,7 @@ function IndexPage({carousel, hotList, cards}) {
   })
 
   return (
-    <Layout title="Техносфера">
+    <Layout title="Техносфера Россия">
       <Row>
         <Col lg="8">
             <Row>

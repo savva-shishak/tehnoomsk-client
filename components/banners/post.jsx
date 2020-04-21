@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-export function Post({content, created, rubric}) {
+export function Post({content, created, rubric, title, tags}) {
     const body = useRef(null)
 
     useEffect(() => {
@@ -11,6 +11,7 @@ export function Post({content, created, rubric}) {
         <div className="banner banner_post">
             <div className="banner__rubric">{rubric}</div>
             <div className="banner_post__content">
+                <div className="banner_post__title">{title}</div>
                 <div className="banner_post__created">{created}</div>
                 <div ref={body} className="banner_post__body"></div>
             </div>

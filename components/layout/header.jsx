@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Socials } from "../socials";
 
 export function Header() {
@@ -7,10 +8,11 @@ export function Header() {
             <div className="header__socials">
                 <Socials />
             </div>
-            <div className="header__img">
-                <img src="/header/main.png"/>
-            </div>
-            
+            <Link href="/" as="/">
+                <a className="header__img">
+                    <img src="/header/main.png"/>
+                </a>
+            </Link>
         </div>
     )
 }

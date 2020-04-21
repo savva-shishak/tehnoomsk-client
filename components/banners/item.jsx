@@ -2,8 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 
 export function BItem({imgSrc, title, anons, rubric, postId, subtitle}) {
-    console.log(rubric);
-    
     return (
         <Link href="/node/[id]" as={'/node/' + postId}>
             <div className="banner banner_item">

@@ -4,11 +4,9 @@ import { Post } from "../../components/banners/post"
 import { BCard, BItem } from "../../components/banners"
 import { getPost } from '../../api'
 import { Row, Col } from '../../components/row'
-import { Paginator } from "../../components/paginator";
+import { Socials } from "../../components/socials";
 
 const Page = ({post, cards, hotList}) => {
-    console.log(hotList);
-    
     return <Layout title={post.title}>
         <Row>
             <Col cols="8">
@@ -17,6 +15,10 @@ const Page = ({post, cards, hotList}) => {
                     rubric={post.rubric}
                     content={post.content}
                 />
+                <div className="share">
+                    <div className="share__text">Поделитесь публикацией</div>
+                    <div className="share__socials"><Socials /></div>
+                </div>
                 <div className="list">
                       {hotList.filter(item => !!item.img_src).map(({id, img_src, subtitle, rubric, article_id, title, anons}) => 
                           <div key={id} className="list_item">
