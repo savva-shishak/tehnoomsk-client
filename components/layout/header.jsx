@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Socials } from "../socials";
+import { Counters } from "./metrics"
 
 export function Header() {
     return (

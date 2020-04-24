@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import { Row, Col } from "../row"
 import { Socials } from "../socials";
 import { Copy } from "../copyBuffer"
+import { Metrics, Counters } from './metrics';
 
 export function Footer({rubrics}) {
-    const [isCopy, setCopy] = useState(false);
+    
 
     return (
         <div className="footer">
@@ -30,7 +31,10 @@ export function Footer({rubrics}) {
                     <div className="footer__subtitle">Рубрики:</div>
                     <div className="footer__rubrics">
                         {rubrics.map(({id, name}) => <div key={id} className="footer__rubric">{name}</div>)}
-                        
+                    </div>
+                    <div className="footer__counters">
+                        <Counters />
+                        <link rel="amphtml" href="/metrics.amp.html" />
                     </div>
                 </Col>
             </Row>
