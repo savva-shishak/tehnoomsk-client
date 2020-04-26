@@ -5,18 +5,19 @@ export function Counters() {
     
 
     return <div className="metrics">
-      <div className="mteric__liveinternet">  <Inner html={liveinternet} /> </div>
-      <div className="mteric__mail">          <Inner html={mail} /> </div>
-      <div className="mteric__mailLogo">      <Inner html={mailLogo} /> </div>
-      <div className="mteric__google">        <Inner html={google} /> </div>
-      <div className="mteric__yandexInformer"><Inner html={yandexInformer} /> </div>
-      <div className="mteric__yandexCounter"> <Inner html={yandexCounter} /> </div>
-      <div className="mteric__openStat">      <Inner html={openStat} /> </div>
-      <div className="mteric__top100">        <Inner html={top100} /> </div>
+      <div className="metrics__container">
+        <div className="metric__item mteric__liveinternet">  <Inner html={liveinternet} /> </div>
+        <div className="metric__item mteric__mail">          <Inner html={mail} /> </div>
+        <div className="metric__item mteric__mailLogo">      <Inner html={mailLogo} /> </div>
+        <div className="metric__item mteric__yandexInformer"><Inner html={yandexInformer} /> </div>
+        <div className="metric__item mteric__yandexCounter"> <Inner html={yandexCounter} /> </div>
+        <div className="metric__item mteric__openStat">      <Inner html={openStat} /> </div>
+        <div className="metric__item mteric__top100">        <Inner html={top100} /> </div>
+      </div>
     </div>
 }
 
-const google = `
+export const google = `
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <ins class="adsbygoogle"
       style="display:inline-block;width:250px;height:300px"
@@ -138,6 +139,7 @@ const openStat = `
 `
 
 const top100 = `
+
 <!-- begin of Top100 code -->
 <script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?3121001"></script>
 <noscript>
@@ -147,3 +149,7 @@ const top100 = `
 </noscript>
   <!-- end of Top100 code -->
 `
+
+export function GoogleAdSense() {
+  return <div dangerouslySetInnerHTML={{__html: google}} className="adsense"></div>
+}

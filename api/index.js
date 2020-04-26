@@ -2,11 +2,13 @@ import { rubrics } from "./rubrics";
 import axios from 'axios'
 import { correctPost, correctPage } from "./hrefs"
 
-export const hostname = "https://www.tehnoomsk.ru"
+const devHost = "http://localhost:3000"
+const prodHost = "https://www.tehnoomsk.ru"
+export const hostname = devHost
 
-export const getPageData = async (pageNum) => {
-    const {data} = await axios.get(hostname + '/api/page', {params: {page: pageNum}})
-
+export const getPageData = async (page, rubric) => {
+    const {data} = await axios.get(hostname + '/api/page', {params: {page, rubric}})
+    
     correctPage(data)
 
     return data;
@@ -20,18 +22,16 @@ export const getPost = async (id) => {
     return data;
 }
 
-export function getRubrics() {
-    return new Promise(res =>{
-        res({rubrics})
-    })
+export async function getRubrics() {
+    const {data} = await axios.get(hostname + '/api/rubrics')
+
+    return data;
 }
 
-export function getEnd() { 
-    return new Promise(res => {
-        setTimeout(() => {
-            res(446)
-        }, 2000);
-    })
+export async function getEnd() { 
+    const {data} = await axios.get('http://ru.tehnoomsk/count')
+
+    return data;
 }
 
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Link from 'next/link'
+import {Link} from './Link'
 import { useRouter } from 'next/router'
 import { getEnd } from '../api' 
 
 let endStore;
 
-export function Paginator() {
+export function Paginator({rubric}) {
     let end = 10000
     
     const { query: {page} } = useRouter()
@@ -25,15 +25,15 @@ export function Paginator() {
         <div className="paginator">
             <div className="paginator__label">Посмотреть наши предыдущие публикации:</div>
             <div className="paginator__control">
-                {position > 3 && <Link href={'/?page=' + Math.max(position - 5, 1)}>
+                {position > 3 && <Link page={Math.max(position - 5, 1)}>
                     <div className="paginator__arrow">
                         <img src='/paginator/left.png'/>
                     </div>
                 </Link>}
                 <div className="paginator__numbers">
-                    <Numbers position={position} end={end} />
+                    <Numbers rubric={rubric} position={position} end={end} />
                 </div>
-                {(+position + 3) < end  && <Link href={'/?page=' + Math.min(+position + +5, end)}>
+                {(+position + 3) < end  && <Link page={Math.min(+position + +5, end)}>
                     <div className="paginator__arrow">
                         <img src='/paginator/right.png'/>
                     </div>
@@ -43,7 +43,7 @@ export function Paginator() {
     )
 }
 
-function Numbers({position, end}) {
+function Numbers({position, rubric, end}) {
     let start;
 
     if (position > 3) {
@@ -64,7 +64,7 @@ function Numbers({position, end}) {
         <div className="paginator__numbers">
             {start != 1 && <div className="paginator__number">...</div>}
             {numbers.map(num => 
-                <Link key={num} href={'/?page=' + num} >
+                <Link key={num} page={num} >
                     <div className={getClassStyle(num)}>
                         {num}
                     </div>

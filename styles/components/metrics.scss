@@ -1,0 +1,10 @@
+.metrics {
+    .metrics__container {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    .metric__item {
+        width: 100%;
+    }
+}

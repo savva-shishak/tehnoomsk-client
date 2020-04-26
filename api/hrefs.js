@@ -29,7 +29,9 @@ export function changeUrlInPost(post) {
 
 function findAndCorrectImgSrc(content) {
     content = replaceAllSubs(content, "http://tehnoomsk.ru", "")
+    content = replaceAllSubs(content, "http://www.tehnoomsk.ru", "")
     content = replaceAllSubs(content, "https://tehnoomsk.ru", "")
+    content = replaceAllSubs(content, "https://www.tehnoomsk.ru", "")
     content = replaceAllSubs(content, "/sites/default/files", "https://db.tehnoomsk.ru/files")
     content = replaceAllSubs(content, "sites/default/files", "https://db.tehnoomsk.ru/files")
     content = replaceAllSubs(content, "http://tehnoomsk.ruhttps//db.tehnoomsk.ru/files", "https://db.tehnoomsk.ru/files")

@@ -7,6 +7,7 @@ import { BCard, BItem } from '../components/banners';
 import { Row, Col } from "../components/row";
 import { Carousel } from '../components/carousel';
 import { getPageData } from '../api';
+import { GoogleAdSense } from '../components/layout/metrics';
 
 function IndexPage({carousel, hotList, cards}) {
   
@@ -28,7 +29,7 @@ function IndexPage({carousel, hotList, cards}) {
   return (
     <Layout title="Техносфера Россия">
       <Row>
-        <Col lg="8">
+        <Col md="8">
             <Row>
               <Col cols="12">
                   {(!!carousel && carousel.length) != 0 && <Carousel slides={carousel}/>}
@@ -49,7 +50,7 @@ function IndexPage({carousel, hotList, cards}) {
               </Col>
           </Row>
         </Col>
-        <Col lg="4">
+        <Col md="4">
           <Row>
               {cards.map(({id, title, subtitle, img_src, article_id, img_down, anons, rubric}) => 
                   <Col key={id} cols="6" md="12">
@@ -64,6 +65,7 @@ function IndexPage({carousel, hotList, cards}) {
                       />
                   </Col>
               )}
+              <GoogleAdSense />
           </Row>
         </Col>
           <style jsx>{`
@@ -72,14 +74,14 @@ function IndexPage({carousel, hotList, cards}) {
               }
           `}</style>
       </Row>
-      <Paginator />
+      <Paginator rubric={"Разное"} />
     </Layout>
   )
 }
 
-IndexPage.getInitialProps = async ({query: {page}}) => {
+IndexPage.getInitialProps = async ({query: {page, rubric}}) => {
   return {
-    ...await getPageData(page || 1)
+    ...await getPageData(page || 1, rubric)
   }
 }
 

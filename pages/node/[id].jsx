@@ -5,11 +5,14 @@ import { BCard, BItem } from "../../components/banners"
 import { getPost } from '../../api'
 import { Row, Col } from '../../components/row'
 import { Socials } from "../../components/socials";
+import { GoogleAdSense } from '../../components/layout/metrics'
+import Link from 'next/link'
 
 const Page = ({post, cards, hotList}) => {
     return <Layout title={post.title}>
         <Row>
             <Col cols="8">
+                <Link href="/">На главную</Link>
                 <Post
                     title={post.title}
                     rubric={post.rubric}
@@ -49,6 +52,7 @@ const Page = ({post, cards, hotList}) => {
                                 />
                         </Col>
                     )}
+                    <GoogleAdSense />
                 </Row>
             </Col>
         </Row>
