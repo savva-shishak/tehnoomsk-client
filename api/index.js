@@ -29,7 +29,7 @@ export async function getRubrics() {
 }
 
 export async function getEnd() { 
-    const {data} = await axios.get('http://ru.tehnoomsk/count')
+    const {data} = await axios.get(hostname + '/api/count')
 
     return data;
 }
