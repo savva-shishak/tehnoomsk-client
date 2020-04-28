@@ -1,3 +1,5 @@
+@import "../../root.scss";
+
 .banner_post {
     cursor: default;
     width: 100%;
@@ -18,5 +20,27 @@
     &__title {
         font-size: 30px;
         font-weight: 600;
+    }
+
+    &__tags-title {
+        padding: 5px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    &__tags {
+        display: flex;
+        flex-flow: row wrap;
+
+        padding: 0 10px;
+    }
+
+    &__tag {
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover {
+            color: $red;
+        }
     }
 }

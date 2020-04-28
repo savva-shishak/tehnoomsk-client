@@ -17,6 +17,7 @@ const Page = ({post, cards, hotList}) => {
                     title={post.title}
                     rubric={post.rubric}
                     content={post.content}
+                    tags={post.tags}
                 />
                 <div className="share">
                     <div className="share__text">Поделитесь публикацией</div>

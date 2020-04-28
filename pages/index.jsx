@@ -79,9 +79,9 @@ function IndexPage({carousel, hotList, cards}) {
   )
 }
 
-IndexPage.getInitialProps = async ({query: {page, rubric}}) => {
+IndexPage.getInitialProps = async ({query: {page, rubric, tag}}) => {
   return {
-    ...await getPageData(page || 1, rubric)
+    ...await getPageData(page || 1, rubric, tag)
   }
 }
 

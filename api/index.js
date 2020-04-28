@@ -4,10 +4,10 @@ import { correctPost, correctPage } from "./hrefs"
 
 const devHost = "http://localhost:3000"
 const prodHost = "https://www.tehnoomsk.ru"
-export const hostname = prodHost
+export const hostname = devHost
 
-export const getPageData = async (page, rubric) => {
-    const {data} = await axios.get(hostname + '/api/page', {params: {page, rubric}})
+export const getPageData = async (page, rubric, tag) => {
+    const {data} = await axios.get(hostname + '/api/page', {params: {page, rubric, tag}})
     
     correctPage(data)
 
@@ -34,6 +34,11 @@ export async function getEnd() {
     return data;
 }
 
+export async function getPostByTitle(title) {
+    const {data} = await axios.get(hostname + '/api/findbytitle', {params: {title}})
+
+    return data;
+}
 
 
 

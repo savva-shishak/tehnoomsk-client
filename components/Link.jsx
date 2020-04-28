@@ -1,7 +1,7 @@
 import NextLink from "next/link"
 import { useRouter } from "next/router"
 
-export function Link({page, rubric, children}) {
+export function Link({page, rubric, tag, children}) {
     const {query} = useRouter()
     const params = []
 
@@ -11,10 +11,16 @@ export function Link({page, rubric, children}) {
         params.push("page=" + query.page)
     }
 
-    if (rubric && rubric != "all") {
+    if (rubric) {
         params.push("rubric=" + rubric)
     } else if (query.rubric) {
         params.push("rubric=" + query.rubric)
+    }
+
+    if (tag) {
+        params.push("tag=" + tag)
+    } else if (query.tag) {
+        params.push("tag=" + query.tag)
     }
 
     const url = "/?" + params.join("&")
