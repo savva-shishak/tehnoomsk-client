@@ -4,7 +4,7 @@ import { correctPost, correctPage } from "./hrefs"
 
 const devHost = "http://localhost:3000"
 const prodHost = "https://www.tehnoomsk.ru"
-export const hostname = devHost
+export const hostname = prodHost
 
 export const getPageData = async (page, rubric, tag) => {
     const {data} = await axios.get(hostname + '/api/page', {params: {page, rubric, tag}})
