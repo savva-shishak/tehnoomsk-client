@@ -1,12 +1,11 @@
-import { ALayout } from "../../components/admin-layout"
+import { ALayout } from '../../layout/admin-layout';
 
-const AdminPage = ({}) => {
+const AdminPage = () => {
+  return (
+    <ALayout>
+        Подождите...
+    </ALayout>
+  );
+};
 
-    return (
-        <ALayout>
-            index
-        </ALayout>
-    )
-}
-
-export default AdminPage
+export default AdminPage;

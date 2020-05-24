@@ -1,0 +1,19 @@
+@import "../root.scss";
+
+.tab {
+    cursor: pointer;
+
+    &_active {
+        color: $red;
+        border-bottom: 1px solid $red;
+        background-color: rgb(226, 226, 226);
+    }
+
+    &__label {
+        padding: 7px;
+    }
+}
+
+.tabs-group {
+    display: flex;
+}

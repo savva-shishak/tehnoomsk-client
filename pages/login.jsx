@@ -1,36 +1,40 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
-import Cookie from 'js-cookie'
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import Cookie from 'js-cookie';
 
-export let auth = false
+export const auth = false;
 
 export default () => {
-    const [login, setLogin] = useState("")
-    const [password, setPassword] = useState("")
-    const router = useRouter()
-    
-    function toAuth() {
-        Cookie.set('auth', true, { expires: 10 })
-        router.push('/admin')
-    }
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const router = useRouter();
 
-    return (
-        <div className="flex-container">
-            <div className="form">
-                <div className="form__title">Вход</div>
-                <div className="form__body">
-                    <div className="form__input">
-                        <div className="form__label">Логин</div>
-                        <input className="form__control" placeholder="Пока ничего заполнять не надо" value={login} onChange={({target: {value}}) => setLogin(value)} />
-                    </div>
-                    <div className="form__input">
-                        <div className="form__label">Пароль</div>
-                        <input className="form__control" placeholder="Просто нажмите кнопку" value={password} onChange={({target: {value}}) => setPassword(value)} />
-                    </div>
-                </div>
-                <div onClick={toAuth} className="form__btn">Войти</div>
-            </div>
-            <style jsx>{`
+  function toAuth () {
+    if (login === 'admin' && password === 'VERY_SECRET_KEY') {
+      Cookie.set('auth', true, { expires: 1 });
+      router.push('/admin');
+    } else {
+      router.push('/');
+    }
+  }
+
+  return (
+    <div className="flex-container">
+      <div className="form">
+        <div className="form__title">Вход</div>
+        <div className="form__body">
+          <div className="form__input">
+            <div className="form__label">Логин</div>
+            <input className="form__control" placeholder="Пока ничего заполнять не надо" value={login} onChange={({ target: { value } }) => setLogin(value)} />
+          </div>
+          <div className="form__input">
+            <div className="form__label">Пароль</div>
+            <input type="password" className="form__control" placeholder="Просто нажмите кнопку" value={password} onChange={({ target: { value } }) => setPassword(value)} />
+          </div>
+        </div>
+        <div onClick={toAuth} className="form__btn">Войти</div>
+      </div>
+      <style jsx>{`
                 .flex-container {
                     display: flex;
                     justify-content: center;
@@ -74,6 +78,6 @@ export default () => {
                     background: #9c9c9c;
                 }
             `}</style>
-        </div>
-    )
-}
+    </div>
+  );
+};

@@ -1,0 +1,15 @@
+.btn {
+    background: #e2e2e2;
+    cursor: pointer;
+    text-align: center;
+    width: max-content;
+
+    &:hover {
+        background: #9c9c9c;
+    }
+
+    &__container {
+        padding: 10px;
+    }
+}
+

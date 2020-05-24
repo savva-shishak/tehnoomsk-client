@@ -1,12 +1,12 @@
-import axios from 'axios'
-import { domain } from "./config";
+import axios from 'axios';
+import { domain } from './config';
 
 export default (_, res) => {
-    axios.get(domain + '/count')
-    .then(({data}) => {
-        res.end(JSON.stringify(data))
+  axios.get(domain + '/count')
+    .then(({ data }) => {
+      res.end(JSON.stringify(data));
     })
     .catch(e => {
-        console.log("Ошибка: " + e);
-    })
-}
+      console.log('Ошибка: ' + e);
+    });
+};
